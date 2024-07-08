@@ -90,6 +90,14 @@ public class Order implements Serializable{
 	public Set<OrderItem> getItems(){
 		return items;
 	}
+	
+	public Double getTotal() {
+		double sum = 0.0;
+		for(OrderItem item : items) {
+			sum+=item.getSubtotal();
+		}
+		return sum;
+	}
 
 	public Payment getPayment() {
 		return payment;
@@ -98,7 +106,7 @@ public class Order implements Serializable{
 	public void setPayment(Payment payment) {
 		this.payment = payment;
 	}
-
+	
 	@Override
 	public int hashCode() {
 		return Objects.hash(id);
